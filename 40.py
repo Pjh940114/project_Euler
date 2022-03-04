@@ -9,17 +9,20 @@
 
 # d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
 
-i=1;string=''
+i=1
+numbers=''
+
 total = 1
 pow_num = 6
-while len(string)<10**pow_num: 
-    string += str(i)
+
+while len(numbers)<10**pow_num: # 10^6
+    numbers += str(i)
     i+=1
 
 for i in range(pow_num+1):
     d_num = pow(10,i)
 
-    print(d_num, string[d_num-1])
-    total *= int(string[d_num-1])
+    print(d_num, numbers[d_num-1])
+    total *= int(numbers[d_num-1])
 
 print("total :",total)
