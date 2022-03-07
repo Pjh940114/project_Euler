@@ -7,24 +7,18 @@
 
 # 합과 차 모두 오각수인 두 오각수 Pj, Pk 에 대해서, 그 차이 D = | Pk − Pj | 는 가장 작을 때 얼마입니까?
 
-import math
+from math import sqrt
+# 오각수 판별 함수
+def is_penta(n):
+	return (1+sqrt(24*n+1))%6 == 0
 
-penta_list = []
-x = 2
-while x < 5000:
+def func():
+	penta=lambda x: int(x*(3*x-1)/2)
+	dif=1
+	while True:
+		for i in range(1, 10000):
+			if is_penta(penta(i+dif)-penta(i)) and is_penta(penta(i+dif)+penta(i)):
+				return penta(i+dif)-penta(i)
+		dif+=1
+print(func())
 
-    for n in range(1,x):
-        penta_num = (n*(3*n-1)) / 2
-        penta_list.append(penta_num)
-
-    for i in range(x-1):
-        for j in range(x-1):
-            if i < j:
-                penta_sum = penta_list[i] + penta_list[j]
-                penta_sub = penta_list[i] - penta_list[j]
-
-                if penta_sum in penta_list and penta_sub in penta_list:
-                    print(abs(penta_sub))
-                    break
-
-        x += 1
