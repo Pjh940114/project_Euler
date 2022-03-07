@@ -13,7 +13,7 @@
 
 # 위와 같은 방법으로 나타낼 수 없는 가장 작은 홀수 합성수는 얼마입니까?
 
-from sympy import N, isprime
+from sympy import isprime
 
 # 홀수인데  k 식으로 만들수 없는 홀수
 
