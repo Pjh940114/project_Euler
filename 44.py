@@ -14,11 +14,11 @@ def is_penta(n):
 
 def func():
 	penta=lambda x: int(x*(3*x-1)/2)
-	dif=1
+	k=1
 	while True:
 		for i in range(1, 10000):
-			if is_penta(penta(i+dif)-penta(i)) and is_penta(penta(i+dif)+penta(i)):
-				return penta(i+dif)-penta(i)
-		dif+=1
+			if is_penta(penta(i+k)-penta(i)) and is_penta(penta(i+k)+penta(i)):
+				return penta(i+k)-penta(i)
+		k+=1
 print(func())
 
