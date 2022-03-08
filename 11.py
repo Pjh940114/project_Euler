@@ -25,10 +25,7 @@
 
 # 그러면 수평, 수직, 또는 대각선 방향으로 연속된 수 네 개의 곱 중 최댓값은 얼마입니까?
 
-from sympy import N
-
-
-number_list = '''08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
+data = '''08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
 81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65
 52 70 95 23 04 60 11 42 69 24 68 56 01 32 56 71 37 02 36 91
@@ -49,16 +46,79 @@ number_list = '''08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48'''
 
-number_list = number_list.split("\n")
+print(data)
+two_dim = [i.split() for i in data.split("\n")]
+max_prod = 0
 
-numbers = []
+# horizontal greatest product
+for row in range(20):
+    for col in range(20):
+        prod = 1
+        for i in range(4):
+            if col + i > 19:
+                prod = 0
+                break
+            prod *= int(two_dim[row][col + i])
+        if prod > max_prod:
+            max_prod = prod
+print(max_prod)
 
-for i in number_list:
-    numbers.append(i.split(' '))
+# vertical greatest product
+for col in range(20):
+    for row in range(20):
+        prod = 1
+        for i in range(4):
+            if row + i > 19:
+                prod = 0
+                break
+            prod *= int(two_dim[row + i][col])
+        if prod > max_prod:
+            max_prod = prod
+print(max_prod)
 
-# print(numbers)
+# diagonal greatest product(top row basis)
+for col in range(20):
+    for row in range(20):
+        prod = 1
+        for i in range(4):
+            if col + row + i > 19: break
+            prod *= int(two_dim[row + i][col + row + i])
+        if prod > max_prod:
+            max_prod = prod
 
-# 가로 4개 곱
+for col in range(20):
+    for row in range(20):
+        prod = 1
+        for i in range(4):
+            if col - row - i < 0:
+                prod = 0
+                break
+            prod *= int(two_dim[row + i][col - row - i])
+        if prod > max_prod:
+            max_prod = prod
+print(max_prod)
 
-H = numbers[0][0:4]
-print(H)
+# diagonal greatest product(bottom row basis)
+for col in range(20):
+    for row in range(19, -1, -1):
+        prod = 1
+        for i in range(4):
+            if col - row - i < 0:
+                prod = 0
+                break
+            prod *= int(two_dim[row - i][col - row - i])
+        if prod > max_prod:
+            max_prod = prod
+
+for col in range(20):
+    for row in range(19, -1, -1):
+        prod = 1
+        for i in range(4):
+            if col + row + i > 19:
+                prod = 0
+                break
+            prod *= int(two_dim[row - i][col + row + i])
+        if prod > max_prod:
+            max_prod = prod
+
+print("max :", max_prod)

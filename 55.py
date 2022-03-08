@@ -21,20 +21,22 @@
 # reverse_a = str(a)[::-1]
 # print(int(reverse_a) + a)
 
-notLychrelnumber = 0
+notpalindrome = 0
 
 for i in range(1,10000):
+    x = i
     count = 0
-    j = i
-    end = False
+    end_loop = False
     while count < 50:
-        k = j + int(str(j)[::-1]) # 대칭수
-        if str(k) == str(k)[::-1]: # 합이 대칭수
-            end = True
+        k = x + int(str(x)[::-1]) # 대칭수의 합
+        if str(k) == str(k)[::-1]: # 대칭수의 합도 대칭수 일때
+            end_loop = True # True 값으로 반환하고 루프를 탈출(break)
             break
-        j = k
-        count += 1
-    if not end:
-        notLychrelnumber += 1
+        x = k # x 에 대칭수 합을 넣고 다시 while 문 반복
+        count += 1 # count 추가
 
-print(notLychrelnumber)
+    if end_loop == False: # = if not end_loop : 50번 돌렸을때도 대칭수가 아니면
+        notpalindrome += 1 # 카운트를 해서 라이크렐 수를 찾는다.
+
+print(notpalindrome)
+
