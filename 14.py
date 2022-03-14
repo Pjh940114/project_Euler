@@ -27,4 +27,4 @@ for i in range(2,1000001):
     if max[0] < len(num):
         max = [len(num), num]
 
-print("max : " , max[1][0])    
+print("max :" , max[1][0])    

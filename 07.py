@@ -3,21 +3,21 @@
 
 # 이 때 10,001번째의 소수를 구하세요.
 
-num = 1
-i = 1
+from math import sqrt
 
-while (num <= 10002):
-    i += 1
-    result = True
-    
-    for j in range(2, i):
-        if i % j == 0:
-            result = False
+prime_list = [2]
+num = 3
+while len(prime_list) < 10001:
+    isPrime = True
+    x = 0
+    while prime_list[x] <= sqrt(num):
+        if num % prime_list[x] == 0:
+            isPrime = False
             break
-    
-    if result == True:
-        num += 1
-    
-    if num == 10002:
-        print("10001번째 소수 : " , i)
+        x += 1
+
+    if isPrime:
+        prime_list.append(num)
+    num += 1
+print("10001 번째 소수 :", max(prime_list))
 

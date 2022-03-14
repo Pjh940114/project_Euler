@@ -5,7 +5,7 @@
 
 from sympy import isprime
  
-total =0
+total = 0
 i=1
 while i < 2000000:
     if isprime(i):
