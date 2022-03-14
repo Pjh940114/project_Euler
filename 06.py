@@ -15,11 +15,11 @@ sum_pow2 = 0
 for i in range(1,101):
     sum_pow1 += i**2
 
-print(sum_pow1)
+print("제곱의 합 :",sum_pow1)
 
 for i in range(1,101):
     sum_pow2 += i
 
-print(sum_pow2**2)
+print("합의 제곱 :", sum_pow2**2)
 
-print(sum_pow2**2 - sum_pow1)
+print("합의 제곱 - 제곱의 합 :", sum_pow2**2 - sum_pow1)
